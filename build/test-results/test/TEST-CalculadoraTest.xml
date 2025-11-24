@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CalculadoraTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-11-24T11:17:23.002Z" hostname="MAC-J7V1Y9X6JV" time="0.01">
+  <properties/>
+  <testcase name="deveSomarCorretamente()" classname="CalculadoraTest" time="0.007"/>
+  <testcase name="deveSubtrairCorretamente()" classname="CalculadoraTest" time="0.0"/>
+  <testcase name="deveMultiplicarCorretamente()" classname="CalculadoraTest" time="0.001"/>
+  <testcase name="deveDividirCorretamente()" classname="CalculadoraTest" time="0.0"/>
+  <testcase name="deveLancarErroAoDividirPorZero()" classname="CalculadoraTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
