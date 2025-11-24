@@ -1,0 +1,58 @@
+name: Pipeline de Promoção (Dev -> Staging -> Prod)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      - name: Simular Deploy
+        run: |
+          echo "Iniciando deploy no ambiente: ${{ vars.ENV_NAME }}"
+          echo "Conectando ao banco de dados usando user: ${{ secrets.DB_USER }}"
+          # Na vida real, aqui iriam comandos como npm install, build, scp, etc.
+
+      - name: Log Específico
+        run: echo "✅ Deploy em DEV concluído. Versão instável disponível para testes."
+
+  deploy-staging:
+    needs: deploy-dev
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      - name: Simular Deploy
+        run: |
+          echo "Promovendo código para: ${{ vars.ENV_NAME }}"
+          echo "Usando credenciais de homologação..."
+
+      - name: Log Específico
+        run: echo "🚀 Deploy em STAGING concluído. Pronto para QA/Homologação."
+
+  deploy-prod:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      - name: Aprovação Manual (Opcional - Requer plano Pro/Team em repos privados)
+        run: echo "Aguardando verificação final..."
+
+      - name: Deploy Final
+        run: |
+          echo "ATENÇÃO: Implantando em ${{ vars.ENV_NAME }}"
+          echo "Usando chave de produção: ${{ secrets.API_KEY_PROD }}"
+
+      - name: Log Específico
+        run: echo "🏆 Deploy em PROD concluído com sucesso! O sistema está no ar."
