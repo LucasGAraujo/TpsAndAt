@@ -1,4 +1,4 @@
-name: Pipeline de Promoção (Dev -> Staging -> Prod)
+name: Pipeline de  (Dev -> Staging -> Prod)
 
 on:
   push:
