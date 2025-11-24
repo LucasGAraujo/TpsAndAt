@@ -1,0 +1,24 @@
+name: "Java Matrix CI"
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java: [11, 17]
+
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+
+      - name: Show Java version
+        run: |
+          echo "Versão ativa do Java: ${{ matrix.java }}"
+          java -version
